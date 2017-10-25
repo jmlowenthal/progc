@@ -53,7 +53,7 @@ bool ArrayList_addFront(
 		ArrayList_resize(list);
 	}
 
-	memcpy(list->data + 1, list->data, list->size * sizeof(int));
+	memmove(list->data + 1, list->data, list->size * sizeof(int));
 
 	*list->data = value;
 	++list->size;
@@ -89,7 +89,7 @@ bool ArrayList_removeFirst(
 		return false;
 	}
 
-	memcpy(list->data, list->data + 1, --list->size);
+	memmove(list->data, list->data + 1, --list->size);
 
 	return true;
 
@@ -123,7 +123,7 @@ bool ArrayList_insertNext(
 		ArrayList_resize(list);
 	}
 
-	memcpy(list->data + index + 2, list->data + index + 1, list->size - index - 1);
+	memmove(list->data + index + 2, list->data + index + 1, list->size - index - 1);
 	list->data[index + 1] = value;
 	++list->size;
 
@@ -145,7 +145,7 @@ bool ArrayList_insertPrev(
 		ArrayList_resize(list);
 	}
 
-	memcpy(list->data + index + 1, list->data + index, list->size - index);
+	memmove(list->data + index + 1, list->data + index, list->size - index);
 	list->data[index] = value;
 	++list->size;
 
@@ -162,7 +162,7 @@ bool ArrayList_remove(
 		return false;
 	}
 
-	memcpy(list->data + index, list->data + index + 1, list->size - index - 1);
+	memmove(list->data + index, list->data + index + 1, list->size - index - 1);
 	--list->size;
 
 	return true;

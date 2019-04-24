@@ -1,0 +1,27 @@
+DESCRIPTION
+
+The server firstly imports several library files, including parts of the standard library and some networking utilities. In the body of the main function, we firstly open the file given as an argument, then initialise the server. The server then repeatedly accepts a client connection, sends all bytes from the file to the client (in chunks of size BUFSIZE), and then closes the connection.
+
+The client also imports additional libraries. It opens a connection to the server, with the host and port specified, and then repeatedly reads from the connection, outputting to the standard output (in chunks of size BUFSIZE).
+
+
+ERRORS
+
+- client.c ln39: buffer should be of the full BUFSIZE size
+- client.c ln41: size and count arguments are the wrong way around
+- client.c ln45: main() should return zero rather than one
+- server.c ln19: first argument is the program name, hence argc should be 3
+- server.c ln58: variable w is should be initialised to zero
+- server.c ln63: we need to move through the buffer otherwise we repeatA
+- server.c ln74: missing close brace of for-loop
+- all code relies on 8-bit characters :O
+
+
+OPTIONAL
+
+abcdefghijklmnopqrstuvwxyz
+   lmn p rst vw    bcd fgh
+
+Well done! This message is decoded correctly. Now go to the point between "G" and "H" on the map and write down the two thousand and five Hall of Fame winner. Now go to point "G" and repeat this word to the occupant.
+
+Answer: Sophos

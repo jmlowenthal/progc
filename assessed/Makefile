@@ -1,17 +1,17 @@
 CC=gcc -std=c99 -Wall --pedantic
 
-client.o: client.c
-	$(CC) -c client.c
+client: client1.c
+	$(CC) -o client client1.c
 
-client: client.o
-	$(CC) -o client client.o
+server: server1.c
+	$(CC) -o server server1.c
 
-server.o: server.c
-	$(CC) -c server.c
+summary: summary.c
+	$(CC) -o summary summary.c
 
-server: server.o
-	$(CC) -o server server.o
+extract: extract.c
+	$(CC) -o extract extract.c
 
-all: client server
+all: client server summary extract
 
 .DEFAULT_GOAL := all

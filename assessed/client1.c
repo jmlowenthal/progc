@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
   
   if (argc != 3) {
     perror("Usage: client <host> <port>");
-    return -1;
+    return 1;
   }
 
   if ((sockfd = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP)) < 0) {
@@ -36,11 +36,11 @@ int main(int argc, char *argv[]) {
 
   {
     int n;
-    char bytes[BUFSIZE-1];
+    char bytes[BUFSIZE];
     while((n = read(sockfd,bytes,BUFSIZE)) > 0) {
-      fwrite(bytes,n,sizeof(char),stdout);
+      fwrite(bytes,sizeof(char),n,stdout);
     }
   }
 
-  return 1;
+  return 0;
 }
